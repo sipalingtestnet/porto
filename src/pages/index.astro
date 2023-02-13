@@ -1,0 +1,24 @@
+---
+import { SITE } from '~/config.mjs';
+import { getCanonical, getHomePermalink } from '~/utils/permalinks';
+import Layout from '~/layouts/PageLayout.astro';
+
+import Hero from '~/components/widgets/Hero.astro';
+import Features from '~/components/widgets/Features.astro';
+// import Features2 from '~/components/widgets/Features2.astro'; // mainnet
+import Testnet from '~/components/widgets/TestnetSection.astro';
+// import Mainnet from '~/components/widgets/Mainnet.astro';
+
+const meta = {
+	title: SITE.title,
+	description: SITE.description,
+	canonical: getCanonical(getHomePermalink()),
+};
+---
+
+<Layout {meta}>
+	<Hero />
+	<Features />
+	<Testnet />
+<!--<Mainnet />-->
+</Layout>

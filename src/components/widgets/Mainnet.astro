@@ -1,0 +1,89 @@
+---
+const items = [
+	{
+		title: 'Dyson',
+		description:
+			'IBC ecosystem ⚛',
+		mainnetPicture: 'https://raw.githubusercontent.com/Nodeist/Kurulumlar/main/logos/kujira.png',
+		Link: 'https://genznodes.dev/mainnet/dyson',
+	},
+	{
+		title: 'Lum Network',
+		description:
+			'IBC ecosystem ⚛',
+		mainnetPicture: 'https://raw.githubusercontent.com/Nodeist/Kurulumlar/main/logos/kujira.png',
+		Link: 'https://genznodes.dev/mainnet/lum',
+	},
+	{
+		title: 'Mars',
+		description:
+			'mars-1',
+		mainnetPicture: 'https://raw.githubusercontent.com/Nodeist/Kurulumlar/main/logos/kujira.png',
+		Link: 'https://genznodes.dev/mainnet/mars',
+	},
+	{
+		title: 'Mises',
+		description:
+			'IBC ecosystem ⚛',
+		mainnetPicture: 'https://raw.githubusercontent.com/Nodeist/Kurulumlar/main/logos/kujira.png',
+		Link: 'https://genznodes.dev/mainnet/mises',
+	},
+	{
+		title: 'Newrl',
+		description:
+			'Mainnet',
+		mainnetPicture: 'https://raw.githubusercontent.com/Nodeist/Kurulumlar/main/logos/kujira.png',
+		Link: 'https://genznodes.dev/mainnet/newrl',
+	},
+	{
+		title: 'Planq',
+		description:
+			'IBC ecosystem ⚛',
+		mainnetPicture: 'https://raw.githubusercontent.com/Nodeist/Kurulumlar/main/logos/kujira.png',
+		Link: 'http://127.0.0.1:3000/mainnet/planq',
+	},
+];
+---
+
+<section class="scroll-mt-16 mb-20" id="mainnet">
+	<div class="absolute inset-0 bg-primary-50 dark:bg-slate-800 pointer-events-none mb-32" aria-hidden="true"></div>
+	<div class="relative max-w-6xl mx-auto px-4 sm:px-6">
+		<div class="py-4 pt-8 sm:py-6 lg:py-8 lg:pt-12">
+			<div class="mb-8 text-center">
+				<h2 class="text-4xl md:text-5xl font-bold leading-tighter tracking-tighter mb-4 font-heading">
+					Mainnet
+				</h2>
+			</div>
+			<div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3 items-start my-12 dark:text-white">
+				{
+					items.map(({ title, mainnetPicture, description, Link }) => (
+						<div class="relative flex flex-col p-6 rounded transition shadow-xl hover:shadow-lg">
+							<div class="flex mb-4">	
+								<img class="rounded-full sm:justify-left h-15 w-15" src={`${mainnetPicture}`}/>
+								<div>
+									<a class="flex ml-4 text-xl font-bold">{title}
+										<span class="relative flex ml-2 h-2.5 w-2.5 mt-[0.55rem] place-items-center">
+											<span class="absolute inline-flex animate-ping h-full w-full rounded-full bg-green-400 opacity-75"></span>
+											<span class="relative rounded-full h-2.5 w-2.5 bg-green-500"></span>
+										</span>
+									</a>
+								<p class="ml-4 text-gray-500 text-md">{description}</p>
+								</div>
+								
+							</div>
+							<div class="flex w-full items-center sm:w-auto p-1 gap-3">
+							<a
+								class="btn bg-primary-400 w-full hover:text-gradient"
+								href={Link}>Stake!</a>
+							<a 
+								class="btn bg-primary-400 w-full hover:text-gradient"
+								href={Link}>Service</a>		
+								
+							</div>
+						</div>
+					))
+				}
+			</div>
+		</div>
+	</div>
+</section>

@@ -1,0 +1,130 @@
+---
+import { SITE } from '~/config.mjs';
+import { getCanonical, getHomePermalink } from '~/utils/permalinks';
+import Layout from '~/layouts/PageLayout.astro';
+import {Icon} from 'astro-icon'
+
+const name= 'nibiru';
+const icon= 'https://raw.githubusercontent.com/GloryDAO/image-project/main/nibiru.jpg';
+const chain= 'nibiru-testnet-2';
+const version= 'v0.16.3';
+const description= 'Nibiru is a decentralized platform, proof-of-stake (PoS) blockchain, and member of the family of interconnected blockchains that comprise the Cosmos Ecosystem.';
+
+const social = [
+	{ label: 'Website', icon: 'tabler:world', href: 'https://nibiru.fi' },
+	{ label: 'Twitter', icon: 'tabler:brand-twitter', href: 'https://twitter.com/nibiruchain'},
+	{ label: 'Discord', icon: 'tabler:brand-discord', href: 'https://discord.gg/UARuSZ3D' },
+	{ label: 'medium', icon: 'tabler:brand-medium', href: 'https://blog.nibiru.fi/' },
+];
+
+const meta = {
+	title: SITE.title,
+	description: SITE.description,
+	canonical: getCanonical(getHomePermalink()),
+};
+
+const items = [
+	
+{
+		title: 'Explorer',
+		Link: 'https://testnet-explorer.revonode.xyz/nibiru',
+	},
+	{
+		title: 'Setup Guide',
+		Link: 'https://revonode.xyz/testnet/nibiru/setup',
+	},
+	{
+		title: 'Api',
+		Link: 'https://revonode.xyz/testnet/nibiru/api',
+	},
+	{
+		title: 'Rpc',
+		Link: 'https://revonode.xyz/testnet/nibiru/rpc',
+	},
+	{
+		title: 'gRPC',
+		Link: 'https://revonode.xyz/testnet/nibiru/grpc',
+	},
+	{
+		title: 'Peers',
+		Link: 'https://revonode.xyz/testnet/nibiru/peers',
+	},
+	{
+		title: 'Statesync',
+		Link: 'https://revonode.xyz/testnet/nibiru/statesync',
+	},
+	{
+		title: 'Addrbook',
+		Link: 'https://revonode.xyz/testnet/nibiru/addrbook',
+	},
+	{
+		title: 'Genesis File',
+		Link: 'https://revonode.xyz/testnet/nibiru/grpc',
+	},
+	{
+		title: 'Snapshot',
+		Link: 'https://revonode.xyz/testnet/nibiru/snapshot',
+	},	
+]	
+---
+
+<Layout {meta}>
+	<section>
+		<div class="max-w-6xl mx-auto px-4 sm:px-6">
+			<div class="py-10">
+				<div class="text-center items-center pb-5 md:pb-5 max-w-5xl mx-auto">
+					<img src={icon} class="w-20 h-20 inline-block rounded-full align-text-bottom mb-1" />           
+					<h1 class="text-3xl font-bold leading-tighter tracking-tighter font-mono">
+					{name}
+					</h1>
+					<div class="flex mb-10 max-w-2xl px-4 mx-auto items-center justify-center gap-5">
+						<ul class="flex">
+							{
+								social.map(({ label, href, icon }) => (
+							
+								<li>
+									<a
+										class="text-gray-800 hover:text-white hover:bg-gradient-to-t from-blue-400 to-sky-300 focus:outline-none focus:ring-4 focus:ring-gray-200 rounded-lg text-sm p-2 inline-flex items-center"
+										aria-label={label}
+										href={href}
+										target="_blank"
+									>
+										<Icon name={icon} class="w-6 h-6" />
+									</a>
+								</li>
+								))
+							}
+							</ul>
+					</div>
+					<div class="text-left max-w-2xl mx-auto mb-1 text-md">
+						<span class="font-bold">Chain ID :</span> {chain} <br/>				
+						<span class="font-bold font-heading "> Node Version :</span> {version} <br/>
+					</div>
+					<div class="text-md indent-5 break-normal text-left lg:text-justify md:text-justify max-w-2xl mx-auto">
+						{description}
+					</div>
+				</div>
+			
+			<section class="m-5 mt-2 pt-7 border-t-2">
+				<h1 class="font-bold font-sans text-xl lg:text-2xl md:text-2xl text-center">
+					Community Tools & Services
+				</h1>
+			</section>
+
+				<div class="grid gap-6 md:grid-cols-3 lg:grid-cols-4 items-start my-10 mb-32">
+					{
+						items.map(({ title , Link }) => (
+						<a href={Link}>  
+							<div class="relative flex flex-col items-center justify-center hover:shadow-lg transition rounded-[7px] border border-slate-500 py-6 px-4 hover:text-white bg-white hover:bg-gradient-to-t from-blue-400 to-sky-300">
+								<div class="flex items-center text-center">					                   
+									<div class="text-xl font-mono text-center">{title}</div>                                 
+								</div>
+							</div>
+						</a>  
+						))
+					}
+				</div>
+			</div>
+		</div>
+	</section>
+</Layout>

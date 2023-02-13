@@ -1,0 +1,64 @@
+---
+import { SITE } from '~/config.mjs';
+import { getCanonical, getHomePermalink } from '~/utils/permalinks';
+import Layout from '~/layouts/PageLayout.astro';
+// import { Icon } from 'astro-icon'
+
+const meta = {
+	title: SITE.title,
+	description: SITE.description,
+	canonical: getCanonical(getHomePermalink()),
+};
+
+
+---
+<Layout {meta}>
+	<section class="scroll-mt-16 pb-[10rem] pt-2" id="testnet">
+		<div class="absolute inset-0 bg-primary-50 pointer-events-none" aria-hidden="true"></div>
+		<div class="relative max-w-6xl mx-auto px-4 sm:px-6">
+			<div class="py-4 pt-8 sm:py-6 lg:py-8 lg:pt-12">
+				<div class="mb-8 text-center">
+					<h2 class="text-4xl font-mono md:text-5xl subpixel-antialiased text-black font-bold leading-tighter tracking-tighter mb-4">
+						Active Mainnet
+					</h2>
+                    
+                    <h3 class="text-medium font-sans">
+                        N/A
+                    </h3>
+            <!-- 
+				</div>
+				<div class="grid gap-5 grid-cols-2 md:grid-cols-3 lg:grid-cols-4 items-start my-12 pt-5">
+					{items.map(({ title, mainnetPicture, description, Link, ping}) => (
+					<a href={Link}>
+					<div class="flex-col flex md:text-left lg:text-left xl:text-left items-center lg:items-left text-center md:flex-row lg:flex-row lg:flex rounded-[10px] transition border-gray-200 hover:shadow-lg border-2 py-6 px-4 md:py-3.5 lg:py-3.5">
+						<img class="w-14 m-2 md:mr-4 lg:mr-4 rounded-full" src={mainnetPicture}/>
+						<div class="flex flex-col">
+							<div>
+								<p class="font-mono text-xl text-black btn-kuntul"
+								>
+								{title}
+                                <span>
+                                <span><Icon name={ping} class="h-2 w-2 ml-1 mt-{0.15rem} animate-ping absolute rounded-full"/></span>
+                                <span><Icon name={ping} class="h-2 w-2 ml-1 mt-{0.15rem} relative rounded-full items-center justify-start"/></span>
+                                </span>
+                            </p>
+                            
+							</div>
+                            
+							<div>
+								<h4 class="text-gray-500 font-mono text-sm">
+									{description}
+								</h4>
+							</div>
+						</div>
+					</div>
+					</a>
+					))}
+                  -->
+			</div>
+              
+			</div>
+          
+		</div>
+	</section>
+</Layout>
