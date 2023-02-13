@@ -1,0 +1,140 @@
+---
+import { SITE } from '~/config.mjs';
+import { getCanonical, getHomePermalink } from '~/utils/permalinks';
+import Layout from '~/layouts/PageLayout.astro';
+import {Icon} from 'astro-icon';
+
+
+const name= 'Acre';
+const icon= 'https://avatars.githubusercontent.com/u/89365999?s=200&v=4';
+const description= 'Arable offers low-fee EVM compatible cosmos chain, multichain derivatives trading, farming, copy trading and voting power lending service on EVM and Cosmos';
+
+const social = [
+	{ label: 'Website', icon: 'tabler:world', href: 'https://arable.finance/' },
+	{ label: 'Twitter', icon: 'tabler:brand-twitter', href: 'https://twitter.com/ArableProtocol'},
+	{ label: 'Discord', icon: 'tabler:brand-discord', href: 'https://www.discord.gg/arable' },
+	{ label: 'Telegram', icon: 'tabler:brand-telegram', href: 'https://t.me/ArableProtocol' },
+];
+
+const meta = {
+	title: SITE.title,
+	description: SITE.description,
+	canonical: getCanonical(getHomePermalink()),
+};
+
+const items = [
+  {
+		title: 'Setup Guide',
+		Link: '/mainnet/acre/setup',
+	},
+
+  {
+		title: 'Cheat Cli',
+		Link: '/mainnet/acre/cheat',
+	},
+
+	{
+		title: 'Explorer',
+		Link: 'https://explorer.spt-node.my.id/acre',
+	},
+	
+	{
+		title: 'Api',
+		Link: '/mainnet/acre/api',
+	},
+	{
+		title: 'Rpc',
+		Link: '/mainnet/acre/rpc',
+	},
+	{
+		title: 'gRPC',
+		Link: '/mainnet/acre/grpc',
+	},
+	{
+		title: 'Peers',
+		Link: '/mainnet/acre/peers',
+	},
+	{
+		title: 'Statesync',
+		Link: '/mainnet/acre/statesync',
+	},
+	{
+		title: 'Addrbook',
+		Link: '/mainnet/acre/addrbook',
+	},
+	{
+		title: 'Genesis File',
+		Link: '/mainnet/acre/grpc',
+	},
+	{
+		title: 'Snapshot',
+		Link: '/mainnet/acre/snapshot',
+	},	
+]	
+---
+
+<Layout {meta}>
+	<section>
+		<div class="max-w-6xl mx-auto px-4 sm:px-6">
+			<div class="py-10">
+				<div class="text-center items-center pb-5 md:pb-5 max-w-5xl mx-auto">
+					<img src={icon} class="w-20 h-20 inline-block rounded-full align-text-bottom mb-1" />           
+					<h1 class="text-3xl font-bold leading-tighter tracking-tighter font-mono">
+					{name}
+					</h1>
+					<div class="text-md  leading-6 indent-5 break-normal text-left lg:text-justify justify-center md:text-justify max-w-2xl mx-auto">
+						{description}
+					</div>
+          
+				</div>
+      
+			
+      <h2 class=" font-sans font-bold text-center">
+       Social Media And Websites 	{name}
+      </h2>
+      <div class="flex mb-7 max-w-2xl px-4 mx-auto items-center justify-center gap-5">
+        <ul class="flex">
+          {
+            social.map(({ label, href, icon }) => (
+          
+            <li>
+              <a
+                class="text-gray-800 hover:text-white hover:bg-gradient-to-t from-blue-400 to-sky-300 focus:outline-none focus:ring-4 focus:ring-gray-200 rounded-lg text-sm p-2 inline-flex items-center"
+                aria-label={label}
+                href={href}
+                target="_blank"
+              >
+                <Icon name={icon} class="w-6 h-6" />
+              </a>
+              
+            </li>
+            ))
+          }
+          </ul>
+          
+      </div>
+      
+        <section class="m-5 mt-2 pt-7 border-t-2 ">
+				<h1 class="font-bold font-sans text-xl lg:text-2xl md:text-2xl text-center">
+					Community Tools & Services
+				</h1>
+       
+			</section>
+      
+				<div class="grid gap-6 md:grid-cols-3 lg:grid-cols-4 items-start my-10 mb-32">
+					{
+						items.map(({ title , Link }) => (
+						<a href={Link}>  
+							<div class="relative flex flex-col items-center justify-center hover:shadow-lg transition rounded-[7px] border border-slate-500 py-6 px-4 hover:text-white bg-white hover:bg-gradient-to-t from-blue-400 to-sky-300">
+								<div class="flex items-center text-center">					                   
+									<div class="text-xl font-mono text-center">{title}</div>                                 
+								</div>
+							</div>
+						</a>  
+						))
+					}
+				</div>
+			</div>
+		</div>
+	</section>
+</Layout>

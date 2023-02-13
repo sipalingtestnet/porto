@@ -17,10 +17,7 @@
     -webkit-text-fill-color: transparent;
   }
 
-  .bg-cover {
-    background-image: url('~/assets/images/bg-image.png');
-    background-size: relative;
-    background-position: center;
+
   }
 
   .btn-kuntul {
@@ -38,7 +35,7 @@
   .btn-primary {
     @apply font-semibold bg-primary text-white border-primary hover:bg-blue-900 hover:border-blue-900 hover:text-white dark:text-white dark:bg-primary dark:border-primary dark:hover:border-blue-900 dark:hover:bg-blue-900;
   }
-}
+
 
 .text-sans {
   font-family: 'Inter', sans-serif;

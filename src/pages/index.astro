@@ -2,12 +2,10 @@
 import { SITE } from '~/config.mjs';
 import { getCanonical, getHomePermalink } from '~/utils/permalinks';
 import Layout from '~/layouts/PageLayout.astro';
-
 import Hero from '~/components/widgets/Hero.astro';
 import Features from '~/components/widgets/Features.astro';
-// import Features2 from '~/components/widgets/Features2.astro'; // mainnet
 import Testnet from '~/components/widgets/TestnetSection.astro';
-// import Mainnet from '~/components/widgets/Mainnet.astro';
+import Mainnet from '~/components/widgets/Mainnet.astro';
 
 const meta = {
 	title: SITE.title,
@@ -19,6 +17,6 @@ const meta = {
 <Layout {meta}>
 	<Hero />
 	<Features />
+  <Mainnet />
 	<Testnet />
-<!--<Mainnet />-->
 </Layout>

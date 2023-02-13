@@ -1,89 +1,60 @@
 ---
+
 const items = [
 	{
-		title: 'Dyson',
+		title: 'Acre',
 		description:
-			'IBC ecosystem ⚛',
-		mainnetPicture: 'https://raw.githubusercontent.com/Nodeist/Kurulumlar/main/logos/kujira.png',
-		Link: 'https://genznodes.dev/mainnet/dyson',
+			'acre_9052-1',
+		mainnetPicture: 'https://avatars.githubusercontent.com/u/89365999?s=200&v=4',
+		Link: '/mainnet/acre',
 	},
-	{
-		title: 'Lum Network',
-		description:
-			'IBC ecosystem ⚛',
-		mainnetPicture: 'https://raw.githubusercontent.com/Nodeist/Kurulumlar/main/logos/kujira.png',
-		Link: 'https://genznodes.dev/mainnet/lum',
-	},
-	{
-		title: 'Mars',
-		description:
-			'mars-1',
-		mainnetPicture: 'https://raw.githubusercontent.com/Nodeist/Kurulumlar/main/logos/kujira.png',
-		Link: 'https://genznodes.dev/mainnet/mars',
-	},
-	{
-		title: 'Mises',
-		description:
-			'IBC ecosystem ⚛',
-		mainnetPicture: 'https://raw.githubusercontent.com/Nodeist/Kurulumlar/main/logos/kujira.png',
-		Link: 'https://genznodes.dev/mainnet/mises',
-	},
-	{
-		title: 'Newrl',
-		description:
-			'Mainnet',
-		mainnetPicture: 'https://raw.githubusercontent.com/Nodeist/Kurulumlar/main/logos/kujira.png',
-		Link: 'https://genznodes.dev/mainnet/newrl',
-	},
-	{
-		title: 'Planq',
-		description:
-			'IBC ecosystem ⚛',
-		mainnetPicture: 'https://raw.githubusercontent.com/Nodeist/Kurulumlar/main/logos/kujira.png',
-		Link: 'http://127.0.0.1:3000/mainnet/planq',
-	},
+	
 ];
 ---
-
-<section class="scroll-mt-16 mb-20" id="mainnet">
-	<div class="absolute inset-0 bg-primary-50 dark:bg-slate-800 pointer-events-none mb-32" aria-hidden="true"></div>
+<!-- 
+	{
+		title: '',
+		description:
+			'',
+		mainnetPicture: '',
+		Link: '',
+	},
+-->
+<section class="scroll-mt-16 pb-[10rem] pt-8" id="networks">
+	<div class="absolute inset-0 bg-primary-50 pointer-events-none" aria-hidden="true"></div>
 	<div class="relative max-w-6xl mx-auto px-4 sm:px-6">
 		<div class="py-4 pt-8 sm:py-6 lg:py-8 lg:pt-12">
-			<div class="mb-8 text-center">
-				<h2 class="text-4xl md:text-5xl font-bold leading-tighter tracking-tighter mb-4 font-heading">
-					Mainnet
+			<div class="text-center">
+				<h2 class="text-2xl md:text-3xl subpixel-antialiased text-black font-bold font-sans tracking-widest">
+					MAINNET
 				</h2>
 			</div>
-			<div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3 items-start my-12 dark:text-white">
-				{
-					items.map(({ title, mainnetPicture, description, Link }) => (
-						<div class="relative flex flex-col p-6 rounded transition shadow-xl hover:shadow-lg">
-							<div class="flex mb-4">	
-								<img class="rounded-full sm:justify-left h-15 w-15" src={`${mainnetPicture}`}/>
-								<div>
-									<a class="flex ml-4 text-xl font-bold">{title}
-										<span class="relative flex ml-2 h-2.5 w-2.5 mt-[0.55rem] place-items-center">
-											<span class="absolute inline-flex animate-ping h-full w-full rounded-full bg-green-400 opacity-75"></span>
-											<span class="relative rounded-full h-2.5 w-2.5 bg-green-500"></span>
-										</span>
-									</a>
-								<p class="ml-4 text-gray-500 text-md">{description}</p>
-								</div>
-								
-							</div>
-							<div class="flex w-full items-center sm:w-auto p-1 gap-3">
-							<a
-								class="btn bg-primary-400 w-full hover:text-gradient"
-								href={Link}>Stake!</a>
-							<a 
-								class="btn bg-primary-400 w-full hover:text-gradient"
-								href={Link}>Service</a>		
-								
-							</div>
+			<div class="grid gap-5 grid-cols-2 md:grid-cols-3 lg:grid-cols-4 items-start my-12 pt-5">
+				{items.map(({ title, mainnetPicture, description, Link }) => (
+			  <a href={Link}>
+				<div class="flex-col flex md:text-left lg:text-left xl:text-left items-center lg:items-left shadow-md shadow-gray-200 text-center md:flex-row lg:flex-row lg:flex rounded-[10px] transition hover:shadow-xl border-slate-600 border py-6 px-3 md:py-3.5 lg:py-3.5">
+					<img class="w-[4rem] m-1.5 md:mr-4 lg:mr-4 rounded-full" src={mainnetPicture}/>
+					<div class="flex flex-col">
+						<div>
+							<p class="text-xl text-black btn-kuntul"
+							>
+							{title}
+							<span class="flex h-[0.5rem] w-[0.5rem] relative ml-1.5">
+								<span class="absolute inline-flex animate-ping h-full w-full rounded-full bg-green-600 opacity-75"></span>
+								<span class="relative rounded-full h-[0.5rem] w-[0.5rem] bg-green-700"></span>
+								</span>
+							</p>
 						</div>
-					))
-				}
-			</div>
+						<div>
+							<h4 class="text-gray-500 font-mono text-sm">
+								{description}
+							</h4>
+						</div>
+					</div>
+				</div>
+			  </a>
+				))}
+			  </div>
 		</div>
 	</div>
 </section>

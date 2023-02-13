@@ -20,33 +20,7 @@ export const headerData = {
       ],
     },
     {
-      text: 'Pages',
-      links: [
-        {
-          text: 'Features',
-          href: '#',
-        },
-        {
-          text: 'Pricing',
-          href: '#',
-        },
-        {
-          text: 'About us',
-          href: '#',
-        },
-        {
-          text: 'Contact',
-          href: '#',
-        },
-        {
-          text: 'Terms',
-          href: getPermalink('/terms'),
-        },
-        {
-          text: 'Privacy policy',
-          href: getPermalink('/privacy'),
-        },
-      ],
+     
     },
     {
       text: 'Widgets',

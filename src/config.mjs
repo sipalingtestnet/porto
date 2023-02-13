@@ -1,13 +1,13 @@
 // import defaultImage from '~/assets/images/default.png';
 
 const CONFIG = {
-  name: 'Revonode',
+  name: 'SPT-NODE',
 
-  origin: 'https://revonode.xyz',
+  origin: 'https://spt-node.xyz',
   basePathname: '/',
   trailingSlash: false,
 
-  title: 'Revonode - staking service provider',
+  title: 'SPT-NODE - staking service provider',
   description:
     '🚀 Relayer and Staking Service Provider for Cosmos Ecosystem',
 //defaultImage: defaultImage,
