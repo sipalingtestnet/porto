@@ -1,0 +1,123 @@
+---
+import { SITE } from '~/config.mjs';
+import { getCanonical, getHomePermalink } from '~/utils/permalinks';
+import Layout from '~/layouts/PageLayout.astro';
+import {Icon} from 'astro-icon';
+
+
+const name= 'Ordos';
+const icon= 'https://1384010418-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FlCF28T3TC2kXJKw5KADQ%2Fuploads%2Fgit-blob-74d6f12c95348fc685a80044baba240473979529%2Fordos.png?alt=media';
+const description= 'the ordos-1 network is one of the 5 chains that are ordos, corrino, harkonnen and atreides. in the Alliance game';
+
+const social = [
+	{ label: 'Website', icon: 'tabler:world', href: 'https://alliance.terra.money/game-of-alliance/overview/' },
+	{ label: 'Twitter', icon: 'tabler:brand-twitter', href: 'https://twitter.com/terra_money'},
+	{ label: 'Discord', icon: 'tabler:brand-discord', href: 'https://discord.com/invite/terra-money' },
+	{ label: 'Github', icon: 'tabler:brand-github', href: 'https://github.com/terra-money/alliance' },
+  { label: 'Medium', icon: 'tabler:brand-medium', href: 'https://medium.com/terra-money' },
+  { label: 'Telegram', icon: 'tabler:brand-telegram', href: 'https://t.me/TerraNetworkLobby' },
+];
+
+const meta = {
+	title: SITE.title,
+	description: SITE.description,
+	canonical: getCanonical(getHomePermalink()),
+};
+
+const items = [
+  {
+		title: 'Setup Guide',
+		Link: '/testnet/goa/ordos/setup',
+	},
+
+  {
+		title: 'Cheat Cli',
+		Link: '/testnet/goa/ordos/cheat',
+	},
+
+	{
+		title: 'Explorer',
+		Link: 'https://explorer.spt-node.my.id/planq',
+	},
+	
+	{
+		title: 'Api',
+		Link: '/testnet/goa/ordos/api',
+	},
+	{
+		title: 'Rpc',
+		Link: '/testnet/goa/ordos/rpc',
+	},
+	{
+		title: 'gRPC',
+		Link: '/testnet/goa/ordos/grpc',
+	},
+
+]	
+---
+
+<Layout {meta}>
+	<section>
+		<div class="max-w-6xl mx-auto px-4 sm:px-6">
+			<div class="py-10">
+				<div class="text-center items-center pb-5 md:pb-5 max-w-5xl mx-auto">
+					<img src={icon} class="w-20 h-20 inline-block rounded-full align-text-bottom mb-1" />           
+					<h1 class="text-3xl font-bold leading-tighter tracking-tighter font-mono">
+					{name}
+					</h1>
+					<div class="text-md  leading-6 indent-5 break-normal text-left lg:text-justify justify-center md:text-justify max-w-2xl mx-auto">
+						{description}
+					</div>
+          
+				</div>
+      
+			
+      <h2 class=" font-sans font-bold text-center">
+       Social Media And Websites 	{name}
+      </h2>
+      <div class="flex mb-7 max-w-2xl px-4 mx-auto items-center justify-center gap-5">
+        <ul class="flex">
+          {
+            social.map(({ label, href, icon }) => (
+          
+            <li>
+              <a
+                class="text-gray-800 hover:text-white hover:bg-gradient-to-t from-blue-400 to-sky-300 focus:outline-none focus:ring-4 focus:ring-gray-200 rounded-lg text-sm p-2 inline-flex items-center"
+                aria-label={label}
+                href={href}
+                target="_blank"
+              >
+                <Icon name={icon} class="w-6 h-6" />
+              </a>
+              
+            </li>
+            ))
+          }
+          </ul>
+          
+      </div>
+      
+        <section class="m-5 mt-2 pt-7 border-t-2 ">
+				<h1 class="font-bold font-sans text-xl lg:text-2xl md:text-2xl text-center">
+					Community Tools & Services
+				</h1>
+       
+			</section>
+      
+				<div class="grid gap-6 md:grid-cols-3 lg:grid-cols-4 items-start my-10 mb-32">
+					{
+						items.map(({ title , Link }) => (
+						<a href={Link}>  
+							<div class="relative flex flex-col items-center justify-center hover:shadow-lg transition rounded-[7px] border border-slate-500 py-6 px-4 hover:text-white bg-white hover:bg-gradient-to-t from-blue-400 to-sky-300">
+								<div class="flex items-center text-center">					                   
+									<div class="text-xl font-mono text-center">{title}</div>                                 
+								</div>
+							</div>
+						</a>  
+						))
+					}
+				</div>
+			</div>
+		</div>
+	</section>
+</Layout>
