@@ -1,0 +1,173 @@
+---
+layout: '~/layouts/MarkdownLayout.astro'
+title: Node CLI Cheatsheet
+logo: https://1384010418-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FlCF28T3TC2kXJKw5KADQ%2Fuploads%2Fgit-blob-74d6f12c95348fc685a80044baba240473979529%2Fordos.png?alt=media
+network: Testnet
+chain: ORDOS
+version:  v0.1.1
+---
+
+###   ORDOS  CLI Cheatsheet
+
+- Always be careful with the capitalized words
+- Specify `--chain-id`
+
+### Wallet Management
+
+Add Wallet
+Specify the value `<wallet>` with your own wallet name
+
+```
+ordosd  keys add <wallet>
+```
+
+Recover Wallet
+```
+ordosd  keys add <wallet> --recover
+```
+
+List Wallet
+```
+ordosd  keys list
+```
+
+Delete Wallet
+```
+ordosd  keys delete <wallet>
+```
+
+Check Wallet Balance
+```
+ordosd  q bank balances $(ordosd  keys show wallet -a)
+```
+
+### Validator Management
+
+Please adjust `<wallet>` , `MONIKER` , `YOUR_KEYBASE_ID` , `YOUR_DETAILS` , `YOUUR_WEBSITE_URL`
+
+Create Validator (Staking)
+```
+ordosd  tx staking create-validator \
+  --amount 1000000000000uord \
+  --pubkey $(ordosd  tendermint show-validator) \
+  --moniker "MONIKER" \
+  --identity="YOUR_KEYBASE_ID" \
+  --details="YOUR_DETAILS" \
+  --website="YOUR_WEBSITE_URL" \
+  --chain-id ordos-1 \
+  --commission-rate="0.05" \
+  --commission-max-rate="0.20" \
+  --commission-max-change-rate="0.01" \
+  --min-self-delegation "1" \
+  --gas-prices="30000000000uord" \
+  --gas="1000000" \
+  --gas-adjustment="1.15" \
+  --from <wallet> \
+  -y
+```
+
+Edit Validator
+```
+ordosd  tx staking edit-validator \
+--moniker="<MONIKER>" \
+--identity="YOUR_KEYBASE_ID" \
+--details="YOUR_DETAILS" \
+--website="YOUR_WEBSITE_URL"
+--chain-id ordos-1 \
+--commission-rate=0.05 \
+--from=<wallet> \
+--gas-adjustment="1.15" \
+--gas="1000000" \
+--gas-prices="30000000000uord" \
+-y
+```
+
+
+Unjail Validator
+```
+ordosd  tx slashing unjail --from <wallet> --chain-id --chain-id ordos-1 --gas-adjustment 1.15 --gas="1000000" --gas-prices="30000000000uord" -y
+```
+
+Check Jailed Reason
+```
+ordosd  query slashing signing-info $(ordosd  tendermint show-validator)
+```
+
+### Token Management
+
+Withdraw Rewards
+```
+ordosd  tx distribution withdraw-all-rewards --from wallet --chain-id ordos-1 --gas-adjustment 1.15 --gas="1000000" --gas-prices="30000000000uord" -y
+```
+
+Withdraw Rewards with Comission
+```
+ordosd  tx distribution withdraw-rewards $(ordosd  keys show wallet --bech val -a) --commission --from wallet --chain-id ordos-1 --gas-adjustment 1.15 --gas="1000000" --gas-prices="30000000000uord" -y
+```
+
+Delegate Token to your own validator
+```
+ordosd  tx staking delegate $(ordosd  keys show wallet --bech val -a) 1000000uord --from wallet --chain-id ordos-1 --gas-adjustment 1.15 --gas="1000000" --gas-prices="30000000000uord" -y
+```
+
+Delegate Token to other validator
+```
+ordosd  tx staking redelegate $(ordosd  keys show wallet --bech val -a) <TO_VALOPER_ADDRESS> 1000000uord --from wallet --chain-id ordos-1 --gas-adjustment 1.15 --gas="1000000" --gas-prices="30000000000uord" -y
+```
+
+Redelegate Token
+```
+ordosd  tx staking redelegate $(ordosd  keys show wallet --bech val -a) <TO_VALOPER_ADDRESS> 1000000uord --from wallet --chain-id ordos-1 --gas-adjustment 1.15 --gas="1000000" --gas-prices="30000000000uord" -y
+```
+
+Unbond Token from your validator
+```
+ordosd  tx staking unbond $(ordosd  keys show wallet --bech val -a) 1000000uord --from wallet --chain-id ordos-1 --gas-adjustment 1.15 --gas="1000000" --gas-prices="30000000000uord" -y
+```
+
+Send Token to another wallet
+```
+ordosd  tx bank send wallet <TO_WALLET_ADDRESS> 1000000uord --from wallet --chain-id ordos-1
+```
+
+### Governance 
+
+Vote
+You can change the value of `yes` to `no`,`abstain`,`nowithveto`
+
+```
+ordosd  tx gov vote 1 yes --from wallet --chain-id ordos-1 --gas-adjustment 1.15 --gas="1000000" --gas-prices="30000000000uord" -y
+```
+
+### Other
+
+
+Enable Indexing usually enabled by default
+```
+sed -i -e 's|^indexer *=.*|indexer = "kv"|' $HOME/.ordosd /config/config.toml
+```
+
+Disable Indexing
+```
+sed -i -e 's|^indexer *=.*|indexer = "null"|' $HOME/.ordosd /config/config.toml
+```
+
+Reset Chain Data
+```
+ordosd  tendermint unsafe-reset-all --home $HOME/.ordosd  --keep-addr-book
+```
+
+### Delete Node
+
+WARNING! Use this command wisely 
+Backup your key first it will remove ORDOS
+
+```
+sudo systemctl stop ordosd  && \
+sudo systemctl disable ordosd  && \
+rm /etc/systemd/system/ordosd .service && \
+sudo systemctl daemon-reload && \
+cd $HOME && \
+rm -rf .ordosd  && \
+rm -rf $(which ordosd )
+```

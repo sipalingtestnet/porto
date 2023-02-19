@@ -5,18 +5,16 @@ import Layout from '~/layouts/PageLayout.astro';
 import {Icon} from 'astro-icon';
 
 
-const name= 'Game of Alliance';
-const icon= 'https://pbs.twimg.com/profile_images/1532402011324436483/_UxbGWt3_400x400.png';
-const description= ' Alliance is an open-source Cosmos SDK module that leverages interchain staking to form economic alliances among blockchains. By boosting the economic activity across Cosmos chains through creating bilateral, mutually beneficial alliances, Alliance aims to give rise to a new wave of innovation, user adoption, and cross-chain collaboration.';
+const name= 'Andromeda';
+const icon= 'https://raw.githubusercontent.com/kj89/testnet_manuals/main/pingpub/logos/andromeda.png';
+const description= 'Andromeda is an application platform layer that connects all public blockchains in the Cosmos ecosystem. Through our vast library of no-code smart contracts, users can harness the power of web3.';
 
 const social = [
-	{ label: 'Website', icon: 'tabler:world', href: 'https://alliance.terra.money/game-of-alliance/overview/' },
-	{ label: 'Twitter', icon: 'tabler:brand-twitter', href: 'https://twitter.com/terra_money'},
-	{ label: 'Discord', icon: 'tabler:brand-discord', href: 'https://discord.com/invite/terra-money' },
-	{ label: 'Github', icon: 'tabler:brand-github', href: 'https://github.com/terra-money/alliance' },
-  { label: 'Medium', icon: 'tabler:brand-medium', href: 'https://medium.com/terra-money' },
-  { label: 'Telegram', icon: 'tabler:brand-telegram', href: 'https://t.me/TerraNetworkLobby' },
-];
+	{ label: 'Website', icon: 'tabler:world', href: 'https://www.andromedaprotocol.io/' },
+	{ label: 'Twitter', icon: 'tabler:brand-twitter', href: 'https://twitter.com/andromedaprot'},
+	{ label: 'Discord', icon: 'tabler:brand-discord', href: 'https://discord.gg/GBd6buKYyZ' },
+	{ label: 'Telegram', icon: 'tabler:brand-telegram', href: 'https://t.me/andromedaprotocol' },
+  ];
 
 const meta = {
 	title: SITE.title,
@@ -26,25 +24,52 @@ const meta = {
 
 const items = [
   {
-		title: 'Ordos',
-		Link: '/testnet/goa/ordos',
+		title: 'Setup Guide',
+		Link: '/testnet/andromeda/setup',
 	},
 
   {
-		title: 'Harkonnen',
-		Link: '/testnet/goa/harkonnen',
+		title: 'Cheat Cli',
+		Link: '/testnet/andromeda/cheat',
 	},
 
 	{
-		title: 'Corrino',
-		Link: '',
+		title: 'Explorer',
+		Link: 'https://explorer.spt-node.my.id/planq',
 	},
 	
 	{
-		title: 'Atreides',
-		Link: '',
+		title: 'Api',
+		Link: '/testnet/andromeda/api',
 	},
-	
+	{
+		title: 'Rpc',
+		Link: '/testnet/andromeda/rpc',
+	},
+	{
+		title: 'gRPC',
+		Link: '/testnet/andromeda/grpc',
+	},
+	{
+		title: 'Peers',
+		Link: '/testnet/andromeda/peers',
+	},
+	{
+		title: 'Statesync',
+		Link: '/testnet/andromeda/statesync',
+	},
+	{
+		title: 'Addrbook',
+		Link: '/testnet/andromeda/addrbook',
+	},
+	{
+		title: 'Genesis File',
+		Link: '/testnet/andromeda/grpc',
+	},
+	{
+		title: 'Snapshot',
+		Link: '/testnet/andromeda/snapshot',
+	},	
 ]	
 ---
 
