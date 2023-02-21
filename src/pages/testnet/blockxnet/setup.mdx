@@ -1,0 +1,103 @@
+---
+layout: '~/layouts/MarkdownLayout.astro'
+title: Installation Node
+logo: https://pbs.twimg.com/profile_images/1571914336288776193/HmxJDHvF_400x400.jpg
+network: Testnet
+chain: blockx_12345-2
+version:  v1.1.0
+---
+
+
+
+
+### A. MANUAL INSTALLATION
+
+
+
+#### Preparing
+```
+sudo apt -q update
+sudo apt -qy install curl git jq lz4 build-essential
+sudo apt -qy upgrade
+```
+
+#### Install GO
+```
+sudo rm -rf /usr/local/go
+curl -Ls https://go.dev/dl/go1.19.5.linux-amd64.tar.gz | sudo tar -xzf - -C /usr/local
+eval $(echo 'export PATH=$PATH:/usr/local/go/bin' | sudo tee /etc/profile.d/golang.sh)
+eval $(echo 'export PATH=$PATH:$HOME/go/bin' | tee -a $HOME/.profile)
+```
+
+#### Get Binary
+```
+curl -#L https://github.com/defi-ventures/blockx-node-public-compiled/raw/main/blockxd -o /usr/local/bin/blockxd
+chmod +x /usr/local/bin/blockxd
+```
+
+## Install Node
+
+```
+cd $HOME
+chmod +x blockxd
+mv blockxd $HOME/go/bin/
+```
+
+## Configure Node
+```
+blockxd init MONIKERNAME --chain-id blockx_12345-1
+```
+
+### Download Genesis
+```
+curl -Ls https://raw.githubusercontent.com/defi-ventures/blockx-node-public-compiled/main/genesis.json > $HOME/.blockxd/config/genesis.json
+```
+
+### Configure Peers
+```
+PEERS=4a7401f7d6daa39d331196d8cc179a4dcb11b5f9@143.198.110.221:26656,49a5a62543f5fec60db42b00d9ebe192c3185e15@143.198.97.96:26656,dccf886659c4afcb0cd4895ccd9f2804c7e7e1cd@143.198.101.61:26656
+sed -i.bak -e "s/^persistent_peers *=.*/persistent_peers = \"$PEERS\"/" $HOME/.blockxd/config/config.toml
+```
+
+## Launch Node
+### Configure Cosmovisor Folder
+```
+# Create Cosmovisor Folders
+mkdir -p ~/.blockxd/cosmovisor/genesis/bin
+mkdir -p ~/.blockxd/cosmovisor/upgrades
+cp ~/go/bin/blockxd ~/.blockxd/cosmovisor/genesis/bin
+```
+
+### Create Service File
+```
+[Unit]
+Description="blockxd node"
+After=network-online.target
+
+[Service]
+User=USER
+ExecStart=/home/USER/go/bin/cosmovisor start
+Restart=always
+RestartSec=3
+LimitNOFILE=4096
+Environment="DAEMON_NAME=blockxd"
+Environment="DAEMON_HOME=/home/USER/.blockxd"
+Environment="DAEMON_ALLOW_DOWNLOAD_BINARIES=false"
+Environment="DAEMON_RESTART_AFTER_UPGRADE=true"
+Environment="UNSAFE_SKIP_BACKUP=true"
+
+[Install]
+WantedBy=multi-user.target
+```
+
+### Start Node Service
+```
+# Enable service
+sudo systemctl enable blockxd.service
+
+# Start service
+sudo service blockxd start
+
+# Check logs
+sudo journalctl -fu blockxd
+```

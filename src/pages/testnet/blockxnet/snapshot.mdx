@@ -1,0 +1,36 @@
+---
+layout: '~/layouts/MarkdownLayout.astro'
+title: Snapshot
+logo: https://pbs.twimg.com/profile_images/1571914336288776193/HmxJDHvF_400x400.jpg
+network: Testnet
+chain: blockx_12345-2
+version:  v1.1.0
+---
+- update 24/1
+
+## Intruction
+
+### install lz4
+```
+sudo apt install lz4 -y
+```
+## Stop Acre and Backup priv_validator_state.json
+```
+sudo systemctl stop cored
+cp $HOME/.aplenq/data/priv_validator_state.json $HOME/.core/priv_validator_state.json.backup
+rm -rf $HOME/.core/data
+```
+
+### download data
+
+```
+curl -L https://snapshot.coreum.spt-node.xyz/coreum/acre-snapshot-20230207.tar.lz4 | lz4 -dc - | tar -xf - -C $HOME/.core
+mv $HOME/.core/priv_validator_state.json.backup $HOME/.core/data/priv_validator_state.json
+```
+
+### start node
+
+```
+sudo systemctl restart cored
+sudo journalctl -fu cored -o cat
+```
