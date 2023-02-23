@@ -6,42 +6,46 @@ network: Testnet
 chain: blockx_12345-2
 version:  v1.1.0
 ---
+import { Binary } from 'src/pages/testnet/blockxnet/!data.mdx';
+
+
+
+
 
 ###  CLI Cheatsheet
 
 - Always be careful with the capitalized words
 - Specify `--chain-id`
 
-### Wallet Management
+### A. Wallet Management
 
-Add Wallet
-Specify the value `<wallet>` with your own wallet name
-
-```
-blockxd  keys add <wallet>
-```
+ Add Wallet
+<pre>
+  <code>{Binary} keys add wallet  ​</code>
+</pre>
 
 Recover Wallet
-```
-blockxd  keys add <wallet> --recover
-```
+<pre>
+  <code>{Binary} keys add wallet --recover ​</code>
+</pre>
 
 List Wallet
-```
-blockxd  keys list
-```
+<pre>
+  <code>{Binary} keys list​</code>
+</pre>
 
 Delete Wallet
-```
-blockxd  keys delete <wallet>
-```
+<pre>
+  <code>{Binary} keys delete [wallet]​</code>
+</pre>
 
 Check Wallet Balance
-```
-blockxd  q bank balances $(blockxd  keys show wallet -a)
-```
+<pre>
+  <code>{Binary} q bank balances $(blockxd  keys show wallet -a)​</code>
+</pre>
 
-### Validator Management
+
+### B. Validator Management
 
 Please adjust `<wallet>` , `MONIKER` , `YOUR_KEYBASE_ID` , `YOUR_DETAILS` , `YOUUR_WEBSITE_URL`
 

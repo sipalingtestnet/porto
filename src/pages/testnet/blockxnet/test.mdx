@@ -1,0 +1,32 @@
+---
+layout: '~/layouts/MarkdownLayout.astro'
+title: Rest api
+logo: https://pbs.twimg.com/profile_images/1571914336288776193/HmxJDHvF_400x400.jpg
+network: Testnet
+chain: blockx_12345-2
+version:  v1.1.0
+---
+
+```
+https://api.blockxnet.spt-node.xyz/
+```
+--------------
+
+
+import {title, date, network} from "src/pages/testnet/blockxnet/rpc.mdx"
+
+# {title}
+
+<pre>
+  <code>curl -Ls {title} > $HOME/{network}/config/addrbook.json ​</code>
+</pre>
+
+<rpc />
+
+
+import { Api, Rpc } from 'src/pages/testnet/blockxnet/!data.mdx';
+
+# {Api}
+# {Rpc}
+
+Ini adalah halaman Markdown Extended yang lain.
