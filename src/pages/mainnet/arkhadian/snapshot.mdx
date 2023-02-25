@@ -1,0 +1,36 @@
+---
+layout: '~/layouts/MarkdownLayout.astro'
+title: Snapshot
+logo: https://arkhadian.com/static/images/600-prism.png
+network: Mainnet
+chain: Arkhadian-1
+version: v-
+---
+- update 24/1
+
+## Intruction
+
+### install lz4 (Optional)
+```
+sudo apt install lz4 -y
+```
+## Stop arkhadian and Backup priv_validator_state.json
+```
+ sudo systemctl stop arkhd
+cp $HOME/.arkh/data/priv_validator_state.json $HOME/.arkh/priv_validator_state.json.backup
+rm -rf $HOME/.arkh/data
+```
+
+### download data
+
+```
+curl -L https://snapshot.arkhadian.spt-node.xyz/arkhadian/arkhadian-snapshot.tar.lz4 | lz4 -dc - | tar -xf - -C $HOME/.arkh
+mv $HOME/.arkh/priv_validator_state.json.backup $HOME/.arkh/data/priv_validator_state.json
+```
+
+### start node
+
+```
+sudo systemctl restart arkhd
+sudo journalctl -fu arkhd -o cat
+```

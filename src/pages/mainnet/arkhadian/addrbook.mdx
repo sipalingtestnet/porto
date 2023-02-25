@@ -1,0 +1,17 @@
+---
+layout: '~/layouts/MarkdownLayout.astro'
+title: Addrbook
+logo: https://arkhadian.com/static/images/600-prism.png
+network: Mainnet
+chain: Arkhadian-1
+version: v-
+---
+
+
+## instruction
+You can use our address book. stop your node then copy the following command to get the addressbook
+```
+wget -O addrbook.json https://snapshot.arkhadian.spt-node.xyz/arkhadian/addrbook.json --inet4-only
+mv addrbook.json ~/.arkh/config
+
+```
