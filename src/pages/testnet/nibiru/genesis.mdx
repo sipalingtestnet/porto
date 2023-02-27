@@ -1,0 +1,15 @@
+---
+layout: '~/layouts/MarkdownLayout.astro'
+title: Genesis file
+logo: https://pbs.twimg.com/profile_images/1556857504394526721/OyWtRrNP_400x400.jpg
+network: Testnet
+chain: nibiru-itn-1
+version: v 0.19.2
+---
+## instruction
+You can use our genesis . stop your node then copy the following command to get the genesis
+```
+wget -O genesis.json https://snapshot.nibiru.spt-node.xyz/nibiru/genesis.json --inet4-only
+mv genesis.json ~/.nibid/config
+
+```

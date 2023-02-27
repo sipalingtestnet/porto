@@ -1,0 +1,17 @@
+---
+layout: '~/layouts/MarkdownLayout.astro'
+title: Addrbook
+logo: https://pbs.twimg.com/profile_images/1556857504394526721/OyWtRrNP_400x400.jpg
+network: Testnet
+chain: nibiru-itn-1
+version: v 0.19.2
+---
+
+
+## instruction
+You can use our address book. stop your node then copy the following command to get the addressbook
+```
+wget -O addrbook.json https://snapshot.nibiru.spt-node.xyz/nibiru/addrbook.json --inet4-only
+mv addrbook.json ~/.nibid/config
+
+```
