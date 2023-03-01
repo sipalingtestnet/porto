@@ -1,0 +1,36 @@
+---
+layout: '~/layouts/MarkdownLayout.astro'
+title: Snapshot
+logo: https://ping.pub/logos/echelon.gif
+network: Mainnet
+chain: ECHELON_3000-3
+version: v-
+---
+- update 24/1
+
+## Intruction
+
+### install lz4 (Optional)
+```
+sudo apt install lz4 -y
+```
+## Stop echelon and Backup priv_validator_state.json
+```
+ sudo systemctl stop echelond
+cp $HOME/.echelond/data/priv_validator_state.json $HOME/.echelond/priv_validator_state.json.backup
+rm -rf $HOME/.echelond/data
+```
+
+### download data
+
+```
+curl -L https://snapshot.echelon.spt-node.my.id/echelon/echelon-snapshot.tar.lz4 | lz4 -dc - | tar -xf - -C $HOME/.echelond
+mv $HOME/.echelond/priv_validator_state.json.backup $HOME/.echelond/data/priv_validator_state.json
+```
+
+### start node
+
+```
+sudo systemctl restart echelond
+sudo journalctl -fu echelond -o cat
+```

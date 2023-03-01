@@ -1,0 +1,15 @@
+---
+layout: '~/layouts/MarkdownLayout.astro'
+title: Genesis file
+logo: https://ping.pub/logos/echelon.gif
+network: Mainnet
+chain: ECHELON_3000-3
+version: v-
+---
+## instruction
+You can use our genesis . stop your node then copy the following command to get the genesis
+```
+wget -O genesis.json https://snapshot.echelon.spt-node.my.id/echelon/genesis.json --inet4-only
+mv genesis.json ~/.echelond/config
+
+```
