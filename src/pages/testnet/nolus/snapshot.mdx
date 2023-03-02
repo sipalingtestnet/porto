@@ -1,0 +1,36 @@
+---
+layout: '~/layouts/MarkdownLayout.astro'
+title: Snapshot
+logo: https://raw.githubusercontent.com/kj89/testnet_manuals/main/pingpub/logos/nolus.png
+network: Testnet
+chain: nolus-rila
+version:  v0.1.39
+---
+- update 24/1
+
+## Intruction
+
+### install lz4 (Optional)
+```
+sudo apt install lz4 -y
+```
+## Stop Nolus and Backup priv_validator_state.json
+```
+ sudo systemctl stop nolusd
+cp $HOME/.nolus/data/priv_validator_state.json $HOME/.nolus/priv_validator_state.json.backup
+rm -rf $HOME/.nolus/data
+```
+
+### download data
+
+```
+curl -L https://snapshot.nolus.spt-node.xyz/nolus/nolus-snapshot.tar.lz4 | lz4 -dc - | tar -xf - -C $HOME/.nolus
+mv $HOME/.nolus/priv_validator_state.json.backup $HOME/.nolus/data/priv_validator_state.json
+```
+
+### start node
+
+```
+sudo systemctl restart nolusd
+sudo journalctl -fu nolusd -o cat
+```
