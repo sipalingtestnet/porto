@@ -1,0 +1,138 @@
+---
+import { SITE } from '~/config.mjs';
+import { getCanonical, getHomePermalink } from '~/utils/permalinks';
+import Layout from '~/layouts/PageLayout.astro';
+import {Icon} from 'astro-icon';
+
+
+const name= 'Ojo';
+const icon= 'https://camo.githubusercontent.com/4d1d700dbfc8383bcb3b97356e74df9f745a74f77ef0f8d1f0c46be4512f6c05/68747470733a2f2f7062732e7477696d672e636f6d2f70726f66696c655f696d616765732f313630333131313038343538333335383436342f68513453306341305f343030783430302e6a7067';
+const description= 'OJO Network is a blockchain-based platform that provides a decentralized solution to the data privacy and security issues faced by individuals and businesses. The platform aims to provide a secure and private environment for data storage, sharing, and management, where users have full control over their data.';
+
+const social = [
+	{ label: 'Website', icon: 'tabler:world', href: ' https://ojo.network/' },
+	{ label: 'Twitter', icon: 'tabler:brand-twitter', href: 'https://twitter.com/ojo_network'},
+  { label: 'Telegram', icon: 'tabler:brand-telegram', href: 'https://t.me/OjoNetwork' },
+	{ label: 'Discord', icon: 'tabler:brand-discord', href: 'https://discord.gg/7qGQUnRgZf' },
+	{ label: 'Github', icon: 'tabler:brand-github', href: 'https://github.com/ojo-network' },
+];
+
+
+const meta = {
+	title: SITE.title,
+	description: SITE.description,
+	canonical: getCanonical(getHomePermalink()),
+  
+};
+
+const items = [
+  {
+		title: 'Setup Guide',
+		Link: '/testnet/ojo/setup',
+	},
+
+  {
+		title: 'Cheat Cli',
+		Link: '/testnet/ojo/cheat',
+	},
+
+	{
+		title: 'Explorer',
+		Link: 'https://ojo.explorers.guru/validator/ojovaloper1zxw8flz596gdg88wp8r9a24nj378wgkvjde64z',
+	},
+	
+	{
+		title: 'Api',
+		Link: 'https://api.ojo.spt-node.xyz/',
+	},
+	{
+		title: 'Rpc',
+		Link: 'https://rpc.ojo.spt-node.xyz/',
+	},
+	{
+		title: 'Peers',
+		Link: '/testnet/ojo/peers',
+	},
+	{
+		title: 'Addrbook',
+		Link: '/testnet/ojo/addrbook',
+	},
+	{
+		title: 'Genesis File',
+		Link: '/testnet/ojo/grpc',
+	},
+	{
+		title: 'Snapshot',
+		Link: '/testnet/ojo/snapshot',
+	},	
+]	
+---
+
+<Layout {meta}>
+	<section>
+		<div class="max-w-6xl mx-auto px-4 sm:px-6">
+			<div class="py-10">
+				<div class="text-center items-center pb-5 md:pb-5 max-w-5xl mx-auto">
+					<img src={icon} class="w-20 h-20 inline-block rounded-full align-text-bottom mb-1" />           
+					<h1 class="text-3xl font-bold leading-tighter tracking-tighter font-mono">
+					{name}
+					</h1>
+					<div class="text-md  leading-6 indent-5 break-normal text-left lg:text-justify justify-center md:text-justify max-w-2xl mx-auto">
+						{description}
+					</div>
+          
+				</div>
+      
+			
+      <h2 class=" font-sans font-bold text-center">
+       Social Media And Websites 	{name}
+      </h2>
+      <div class="flex mb-7 max-w-2xl px-4 mx-auto items-center justify-center gap-5">
+        <ul class="flex">
+          {
+            social.map(({ label, href, icon }) => (
+          
+            <li>
+              <a
+                class="text-gray-800 hover:text-white hover:bg-gradient-to-t from-blue-400 to-sky-300 focus:outline-none focus:ring-4 focus:ring-gray-200 rounded-lg text-sm p-2 inline-flex items-center"
+                aria-label={label}
+                href={href}
+                target="_blank"
+              >
+                <Icon name={icon} class="w-6 h-6" />
+              </a>
+              
+            </li>
+            ))
+          }
+          </ul>
+          
+      </div>
+      
+        <section class="m-5 mt-2 pt-7 border-t-2 ">
+				<h1 class="font-bold font-sans text-xl lg:text-2xl md:text-2xl text-center">
+					Community Tools & Services
+				</h1>
+       
+        
+        <a href="https://ojo.explorers.guru/validator/ojovaloper1zxw8flz596gdg88wp8r9a24nj378wgkvjde64z" style="display: block; text-align: center; color: blue; font-weight: bold;">Support me through your delegate 🙏</a>
+
+			</section>
+      
+				<div class="grid gap-6 md:grid-cols-3 lg:grid-cols-4 items-start my-10 mb-32">
+					{
+						items.map(({ title , Link }) => (
+						<a href={Link}>  
+							<div class="relative flex flex-col items-center justify-center hover:shadow-lg transition rounded-[7px] border border-slate-500 py-6 px-4 hover:text-white bg-white hover:bg-gradient-to-t from-blue-400 to-sky-300">
+								<div class="flex items-center text-center">					                   
+									<div class="text-xl font-mono text-center">{title}</div>                                 
+								</div>
+							</div>
+						</a>  
+						))
+					}
+				</div>
+			</div>
+		</div>
+	</section>
+</Layout>

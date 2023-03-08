@@ -1,0 +1,25 @@
+---
+layout: '~/layouts/MarkdownLayout.astro'
+title: Peers
+logo: https://camo.githubusercontent.com/4d1d700dbfc8383bcb3b97356e74df9f745a74f77ef0f8d1f0c46be4512f6c05/68747470733a2f2f7062732e7477696d672e636f6d2f70726f66696c655f696d616765732f313630333131313038343538333335383436342f68513453306341305f343030783430302e6a7067
+network: Testnet
+chain: ojo-devnet
+version: v -
+---
+
+The following are some of the active roles of the Arcadian community
+```
+d5519e378247dfb61dfe90652d1fe3e2b3005a5b@65.109.68.190:39656
+68874e60acc2b864959ab97e651ff767db47a2ea@65.108.140.220:26656
+769b35816998e91918569c3bbebb6e016ddd74b5@35.243.210.205:26656
+e2b8b9f3106d669fe6f3b49e0eee0c5de818917e@213.239.217.52:32656
+```
+
+
+You can also use this peer easily by copying the following command then pste on your vps
+
+```
+PEERS="d5519e378247dfb61dfe90652d1fe3e2b3005a5b@65.109.68.190:39656,68874e60acc2b864959ab97e651ff767db47a2ea@65.108.140.220:26656,769b35816998e91918569c3bbebb6e016ddd74b5@35.243.210.205:26656,e2b8b9f3106d669fe6f3b49e0eee0c5de818917e@213.239.217.52:32656"
+sed -i -e "s|^persistent_peers *=.*|persistent_peers = \"$PEERS\"|" $HOME/.nibid/config/config.toml
+
+```
