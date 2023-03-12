@@ -24,7 +24,7 @@ rm -rf $HOME/.ojo/data
 ### download data
 
 ```
-curl -L https://snapshot.ojo.spt-node.xyz/ojo/ojo-snapshot.tar.lz4 | lz4 -dc - | tar -xf - -C $HOME/.ojo
+curl -L https://snapshot.ojo.spt-node.dev/ojo/ojo-snapshot.tar.lz4 | lz4 -dc - | tar -xf - -C $HOME/.ojo
 mv $HOME/.ojo/priv_validator_state.json.backup $HOME/.ojo/data/priv_validator_state.json
 ```
 
@@ -34,3 +34,8 @@ mv $HOME/.ojo/priv_validator_state.json.backup $HOME/.ojo/data/priv_validator_st
 sudo systemctl restart ojod
 sudo journalctl -fu ojod -o cat
 ```
+<pre>
+  <code class="language-javascript">
+    // code block
+  </code>
+</pre>
